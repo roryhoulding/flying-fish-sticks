@@ -1,42 +1,43 @@
+// Node modules
+import { createContext } from 'react';
+import { Switch, Route, useHistory } from "react-router-dom";
+import { io } from 'socket.io-client';
+
+// Helpers
+import { SOCKET_SERVER_URL } from './helpers/constants';
+
+// Styles
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 
 // Pages
 import JoinGamePage from './pages/JoinGame/JoinGamePage';
-import NewGamePage from './pages/NewGame/NewGamePage';
-
-// Components
-import Button from './components/Button/Button';
+import HomePage from './pages/Home/HomePage';
+import Game from './pages/Game/Game';
 
 function App() {
+  const socket = io(SOCKET_SERVER_URL);
+  const history = useHistory();
+
+  socket.on('createdNewGameRoom', (roomCode) => {
+    history.push(`/play/${roomCode}`);
+    console.log(roomCode)
+  });
+
   return (
-    <Router>
       <Switch>
         <Route path="/" exact>
-          <Link to='/new'>
-            <Button>New game</Button>
-          </Link>
-          <Link to='/join'>
-            <Button>Join game</Button>
-          </Link>
-          <div>Home</div>
+          <HomePage socket={socket}/>
+        </Route>
+        <Route path="/play/:id" exact>
+          <Game socket={socket}/>
         </Route>
         <Route exact path='/join'>
-          <JoinGamePage />
-        </Route>
-        <Route exact path='/new'>
-          <NewGamePage />
+          <JoinGamePage socket={socket}/>
         </Route>
         <Route>
           <div>404</div>
         </Route>
       </Switch>
-    </Router>
   );
 }
 

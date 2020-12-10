@@ -1,0 +1,1 @@
+export const SOCKET_SERVER_URL = process.env.NODE_ENV === 'production' ? null : 'http://localhost:3001';

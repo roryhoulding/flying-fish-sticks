@@ -14,7 +14,6 @@ const Card = ({ children, padding }) => {
   ]
 
   const classStr = getClassStr(classList);
-  console.log(classStr);
 
   return (
     <div className={classStr}>
