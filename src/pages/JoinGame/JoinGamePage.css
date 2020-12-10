@@ -1,0 +1,23 @@
+.join-page-container {
+  background-color: var(--grey-lightest );
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.join-form input[type=text] {
+  width: 200px;
+}
+
+.join-form > *:not(:last-child) {
+  margin-bottom: 32px;
+}

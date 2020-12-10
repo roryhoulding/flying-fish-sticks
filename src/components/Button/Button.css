@@ -1,0 +1,40 @@
+/* --------- Resets ---------- */
+
+button {
+  background: none;
+  cursor: pointer;
+  border: 0;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+/* --------- General styles ---------- */
+
+button {
+  padding: 0 16px;
+  height: 44px;
+  border-radius: 22px;
+  box-shadow: 0px 4px 0px 0px var(--purple-120);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0px 2px 0px 0px var(--purple-120);
+}
+
+button:focus {
+  outline: 0;
+}
+
+/* --------- Types ---------- */
+
+/* Primary */
+
+button.primary {
+  background-color: var(--purple-100);
+  color: white;
+}
+
+button.primary:hover {
+  background-color: var(--purple-90);
+}

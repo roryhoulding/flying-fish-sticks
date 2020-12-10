@@ -1,6 +1,53 @@
+/* Resets */
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* -------- Variables -------- */
+
 :root {
+  /* Purple */
   --purple-100: #4157D0;
+  --purple-90: #5468D5;
   --purple-80: #6779D9;
   --purple-60: #8D9AE3;
   --purple-120: #2339B5;
+
+  /* Grey */
+  --grey-lightest: #F9FAFB;
+  --grey-light: #F4F6F8;
+  --grey: #DFE3E8;
+  --grey-dark: #C5CDD5;
+}
+
+/* Padding */
+
+.pad-0 {
+  padding: 0px;
+}
+
+.pad-8 {
+  padding: 8px;
+}
+
+.pad-16 {
+  padding: 16px;
+}
+
+.pad-24 {
+  padding: 24px
+}
+
+.pad-32 {
+  padding: 32px
+}
+
+.pad-48 {
+  padding: 48px
 }

@@ -6,22 +6,31 @@ import {
   Link
 } from "react-router-dom";
 
+// Pages
+import JoinGamePage from './pages/JoinGame/JoinGamePage';
+import NewGamePage from './pages/NewGame/NewGamePage';
+
 // Components
-import Button from './components/button';
+import Button from './components/Button/Button';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path="/" exact>
-          <Button>Join game</Button>
+          <Link to='/new'>
+            <Button>New game</Button>
+          </Link>
+          <Link to='/join'>
+            <Button>Join game</Button>
+          </Link>
           <div>Home</div>
         </Route>
-        <Route path="/new" exact>
-          <div>New game</div>
+        <Route exact path='/join'>
+          <JoinGamePage />
         </Route>
-        <Route path="/join" exact>
-          <div>Join a game</div>
+        <Route exact path='/new'>
+          <NewGamePage />
         </Route>
         <Route>
           <div>404</div>
