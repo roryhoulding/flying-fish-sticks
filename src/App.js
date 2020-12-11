@@ -1,5 +1,5 @@
 // Node modules
-import { createContext } from 'react';
+import { useState } from 'react';
 import { Switch, Route, useHistory } from "react-router-dom";
 import { io } from 'socket.io-client';
 
@@ -20,7 +20,6 @@ function App() {
 
   socket.on('createdNewGameRoom', (roomCode) => {
     history.push(`/play/${roomCode}`);
-    console.log(roomCode)
   });
 
   return (
@@ -28,7 +27,7 @@ function App() {
         <Route path="/" exact>
           <HomePage socket={socket}/>
         </Route>
-        <Route path="/play/:id" exact>
+        <Route path="/play/:roomCode" exact>
           <Game socket={socket}/>
         </Route>
         <Route exact path='/join'>
