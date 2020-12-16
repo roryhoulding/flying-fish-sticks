@@ -12,7 +12,7 @@ import './App.css';
 // Pages
 import JoinGamePage from './pages/JoinGame/JoinGamePage';
 import HomePage from './pages/Home/HomePage';
-import Game from './pages/Game/Game';
+import GameRoom from './pages/GameRoom/GameRoom';
 
 function App() {
   const socket = io(SOCKET_SERVER_URL);
@@ -28,7 +28,7 @@ function App() {
           <HomePage socket={socket}/>
         </Route>
         <Route path="/play/:roomCode" exact>
-          <Game socket={socket}/>
+          <GameRoom socket={socket}/>
         </Route>
         <Route exact path='/join'>
           <JoinGamePage socket={socket}/>

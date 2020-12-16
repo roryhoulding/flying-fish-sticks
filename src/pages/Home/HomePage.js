@@ -1,10 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 // Components
 import Button from '../../components/Button/Button';
 
 const HomePage = ({ socket }) => {
+  const history = useHistory();
+
+  socket.on('createdNewGameRoom', (roomCode) => {
+    history.push(`/play/${roomCode}`);
+  });
 
   const handleClickNew = () => {
     socket.emit('createNewGameRoom');
