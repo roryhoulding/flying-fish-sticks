@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 
 // Pages
 import WaitingRoom from './WaitingRoom/WaitingRoom';
+import GamePlay from './GamePlay/GamePlay';
 
 const GameRoom = ({ socket }) => {
   const [roomData, setRoomData] = useState({status: 'loading'});
   const { roomCode } = useParams();
-  console.log(roomData);
 
   // Attempt to join a game room  
   useEffect(() => {
@@ -16,8 +16,13 @@ const GameRoom = ({ socket }) => {
     socket.on('err', (err) => {
       console.log(err.msg);
     })
+
+    socket.on('roomDoesNotExist', () => {
+      setRoomData({doesNotExist: true})
+    })
   
     socket.on('roomUpdate', (data) => {
+      console.log(data);
       setRoomData(data);
     })
 
@@ -53,6 +58,10 @@ const GameRoom = ({ socket }) => {
 
   if (roomData.status === 'waiting-room') {
     return <WaitingRoom roomData={roomData} socket={socket}/>
+  }
+
+  if (roomData.status === 'in-a-game') {
+    return <GamePlay roomData={roomData} socket={socket}/>
   }
 }
 

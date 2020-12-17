@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 // Components
 import NameInput from './NameInput';
+import Button from '../../../components/Button/Button';
+import Emoji from '../../../components/Emoji/Emoji';
 
 // Helpers
 import findObjectInArray from '../../../helpers/findObjectInArray';
@@ -15,17 +17,43 @@ const WaitingRoom = ({ roomData, socket }) => {
     setShowNameInput(playerName ? false : true);
   }, [roomData])
 
+  const handleStartGame = () => {
+    socket.emit('startGame');
+  }
+
   return (
     <>
       <div>Waiting room</div>
       {roomData.players.map(player => {
         if (player.name) {
-          return <p key={player.id}>{player.name}</p>
+          return (
+            <div key={player.id}>
+              <Emoji 
+                symbol={player.emoji.symbol} 
+                label={player.emoji.label} 
+              />
+              <p>{player.name}</p>
+            </div>
+          )
         } else {
-          return <p key={player.id}>Player...</p>
+          return (
+            <div key={player.id}>
+              <Emoji 
+                symbol={player.emoji.symbol} 
+                label={player.emoji.label} 
+              />
+              <p>Player...</p>
+            </div>
+          )
         }
       })}
-      {showNameInput ? <NameInput socket={socket}/> : null
+      {showNameInput ? <NameInput socket={socket}/> : null}
+      {roomData.players.length < 3 ? 
+        <p>You need at least 3 players...</p> :
+        <Button 
+          type='button'
+          handleClick={handleStartGame}
+        >Start game</Button>
       }
     </>
   )
