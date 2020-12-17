@@ -1,5 +1,5 @@
 // Node modules
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Switch, Route, useHistory } from "react-router-dom";
 import { io } from 'socket.io-client';
 
@@ -15,12 +15,15 @@ import HomePage from './pages/Home/HomePage';
 import GameRoom from './pages/GameRoom/GameRoom';
 
 function App() {
-  const socket = io(SOCKET_SERVER_URL);
-  const history = useHistory();
+  const [socket, setSocket] = useState(null);
 
-  socket.on('createdNewGameRoom', (roomCode) => {
-    history.push(`/play/${roomCode}`);
-  });
+  useEffect(() => {
+    setSocket(io(SOCKET_SERVER_URL))
+  }, [])
+
+  if (!socket) {
+    return <>Loading...</>
+  }
 
   return (
       <Switch>

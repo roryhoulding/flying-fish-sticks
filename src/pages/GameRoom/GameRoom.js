@@ -7,6 +7,7 @@ import WaitingRoom from './WaitingRoom/WaitingRoom';
 const GameRoom = ({ socket }) => {
   const [roomData, setRoomData] = useState({status: 'loading'});
   const { roomCode } = useParams();
+  console.log(roomData);
 
   // Attempt to join a game room  
   useEffect(() => {
@@ -16,7 +17,7 @@ const GameRoom = ({ socket }) => {
       console.log(err.msg);
     })
   
-    socket.on('attemptJoinRoomRes', (data) => {
+    socket.on('roomUpdate', (data) => {
       setRoomData(data);
     })
 
@@ -51,7 +52,7 @@ const GameRoom = ({ socket }) => {
   }
 
   if (roomData.status === 'waiting-room') {
-    return <WaitingRoom roomData={roomData} />
+    return <WaitingRoom roomData={roomData} socket={socket}/>
   }
 }
 
