@@ -19,3 +19,6 @@ I built a proof of concept to learn Socket.io, figure out how I was going to bui
 - [React](https://reactjs.org/)
 - [Node](https://nodejs.org/en/) (with [Express](https://expressjs.com/))
 - [Socket.io](https://socket.io/)
+
+### UI Exploration
+![UI exploration](./README/ui-exploration.png)
