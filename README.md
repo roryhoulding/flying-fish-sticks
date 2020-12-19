@@ -19,6 +19,7 @@ I built a proof of concept to learn Socket.io, figure out how I was going to bui
 - [React](https://reactjs.org/)
 - [Node](https://nodejs.org/en/) (with [Express](https://expressjs.com/))
 - [Socket.io](https://socket.io/)
+- [Canvas Web API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 
 ### UI Exploration
 ![UI exploration](./README/ui-exploration.png)
