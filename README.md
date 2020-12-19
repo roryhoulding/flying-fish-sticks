@@ -4,13 +4,13 @@ A game based on [Eat Poop You Cat](http://www.annarbor.com/entertainment/eat-poo
 
 This is a work in progress. 
 
-[Server repository](https://reactjs.org/)
+[Server repository](https://github.com/roryhoulding/flying-fish-sticks-server)
 
 ### Proof of concept
 
 I built a proof of concept to learn Socket.io, figure out how I was going to build the app and demonstrate gameplay.
 
-[Proof of concept repository](https://reactjs.org/)
+[Proof of concept repository](https://github.com/roryhoulding/draw-game-proof)
 
 (This GIF might take a little bit to load).
 ![Proof of concept](./README/proof-of-concept.gif)
